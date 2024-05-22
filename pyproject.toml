@@ -1,0 +1,137 @@
+[tool.poetry]
+name = "django-lockmin"
+version = "0.0.0"
+description = "A mixin to provide locking capabilites for Django admin views."
+authors = []
+include = ["django_lockmin"]
+classifiers = [
+    "Environment :: Web Environment",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Internet :: WWW/HTTP :: WSGI",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+# Used for building the package for the client to be published on PyPi.
+# https://python-poetry.org/docs/pyproject/#poetry-and-pep-517
+[build-system]
+requires = ["poetry-core>=1.2.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
+
+[tool.poetry.dependencies]
+Django = ">=4.2"
+Python = ">=3.8"
+
+[tool.poetry.group.dev.dependencies]
+behave = "*"
+behave-django = "^1.4.0"
+django-stubs = "*"
+mock = "^4.0.3"
+mypy = "^1.9.0"
+pdbpp = "*"
+pytest-cov = "*"
+pytest-django = "*"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/PacificGilly/django-lockmin/issues"
+"All Releases" = "https://github.com/PacificGilly/django-lockmin/releases"
+"Latest Release" = "https://github.com/PacificGilly/django-lockmin/releases/latest"
+"Source" = "https://github.com/PacificGilly/django-lockmin"
+
+[tool.ruff]
+src = ["src"]
+lint.select = ["E", "W", "F", "I", "C", "T"]
+lint.ignore = ["E501", "T100"]
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    "*migrations/*",
+]
+
+# Assume Python 3.12.
+target-version = "py312"
+
+# replicate lyst-isort sections
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-local-folder = ["tests"]
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.pytest.ini_options]
+# -ra = show extra test summary info for all except passed tests
+addopts = "--pdbcls=IPython.terminal.debugger:TerminalPdb -p no:warnings --cov=django-lockmin"
+
+[tool.coverage.run]
+branch = true
+source = [
+    "lockmin",
+    "tests"
+]
+
+[tool.coverage.report]
+include = [
+    "src/*",
+    "tests/*"
+]
+omit = [
+    "*/migrations/*",
+    "*wsgi.py",
+    "*/management/commands/*",
+    "*/templates/*",
+    "*storage_backends.py"
+]
+
+[tool.mypy]
+# TODO: Enable all mypy features.
+# strict = true
+warn_unused_configs = true
+# disallow_any_generics = true
+# disallow_subclassing_any = true
+# disallow_untyped_calls = true
+disallow_incomplete_defs = true
+# check_untyped_defs = true
+# disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+# warn_return_any = true
+# no_implicit_reexport = true
+show_traceback = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = "django_lockmin.*"
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = [
+    "behave.*",
+]
+ignore_missing_imports = true
