@@ -258,7 +258,6 @@ class AdminLockingMixin(ModelAdmin):
 
         return f"{user.first_name} {user.last_name}"
 
-    @override
     def has_view_permission(
         self, request: HttpRequest, obj: Optional[models.Model] = None
     ) -> bool:
@@ -270,7 +269,6 @@ class AdminLockingMixin(ModelAdmin):
         """
         return True
 
-    @override
     def has_change_permission(
         self, request: HttpRequest, obj: Optional[models.Model] = None
     ) -> bool:
@@ -300,7 +298,6 @@ class AdminLockingMixin(ModelAdmin):
         user: User = get_object_or_404(User, pk=request.user.id)
         return user.has_perm("%s.%s" % (self.opts.app_label, codename))
 
-    @override
     def get_model_perms(self, request: HttpRequest) -> dict[str, bool]:
         """
         Adds the permission to "unlock" a locked record.
@@ -323,7 +320,6 @@ class AdminLockingMixin(ModelAdmin):
 
         return perms
 
-    @override
     def change_view(
         self,
         request: HttpRequest,
@@ -355,7 +351,6 @@ class AdminLockingMixin(ModelAdmin):
 
         return super().change_view(request, object_id)
 
-    @override
     def changelist_view(
         self, request: HttpRequest, extra_context: Optional[dict[str, Any]] = None
     ) -> HttpResponse:

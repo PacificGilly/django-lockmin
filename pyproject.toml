@@ -2,6 +2,7 @@
 name = "django-lockmin"
 version = "0.0.0"
 description = "A mixin to provide locking capabilites for Django admin views."
+readme = "README.md"
 authors = []
 include = ["django_lockmin"]
 classifiers = [
