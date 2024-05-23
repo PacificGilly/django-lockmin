@@ -73,8 +73,7 @@ jobs:
       - name: Get build
         uses: actions/cache/restore@v4
         with:
-          path: |
-            dist/
+          path: dist/
           key: cache-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Configure Poetry test repo
