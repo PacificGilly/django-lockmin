@@ -6,9 +6,6 @@ on:
   push:
     branches: [main]
 
-permissions:
-  contents: read
-
 # Only allow the latest workflow to run and cancel all others.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,8 +14,8 @@ concurrency:
 jobs:
   # Build the python package even on PRs to ensure we're able to build the package properly.
   deploy:
-    runs-on: ubuntu-latest
     environment: test
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -52,8 +49,8 @@ jobs:
         
       - name: Deploy to testpypi.org
         if: github.ref == 'refs/heads/main'
-        run: poetry publish -r test_pypi --dist-dir dist/ --username __token__ --password '${{ secrets.TEST_PYPI_TOKEN }}'
+        run: poetry publish -r test_pypi --dist-dir dist/ --username __token__ --password ${{ secrets.TEST_PYPI_TOKEN }}
 
       - name: Deploy to testpypi.org (Dry Run)
         if: github.ref != 'refs/heads/main'
-        run: poetry publish -r test_pypi --dist-dir dist/ --username __token__ --password '${{ secrets.TEST_PYPI_TOKEN }}'
+        run: poetry publish -r test_pypi --dist-dir dist/ --username __token__ --password ${{ secrets.TEST_PYPI_TOKEN }}
