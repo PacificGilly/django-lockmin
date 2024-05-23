@@ -5,6 +5,8 @@ name: Upload Test Python Package
 on:
   push:
     branches: [main]
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 # Only allow the latest workflow to run and cancel all others.
 concurrency:
