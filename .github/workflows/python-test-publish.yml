@@ -49,8 +49,8 @@ jobs:
         
       - name: Deploy to testpypi.org
         if: github.ref == 'refs/heads/main'
-        run: poetry publish -r test_pypi --dist-dir dist/ --username __token__ --password ${{ secrets.TEST_PYPI_TOKEN }}
+        run: poetry publish -r test_pypi --dist-dir dist/ --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Deploy to testpypi.org (Dry Run)
         if: github.ref != 'refs/heads/main'
-        run: poetry publish -r test_pypi --dist-dir dist/ --username __token__ --password ${{ secrets.TEST_PYPI_TOKEN }}
+        run: poetry publish -r test_pypi --dist-dir dist/ --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
