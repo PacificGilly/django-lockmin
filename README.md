@@ -3,8 +3,8 @@ Django-Lockmin
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
     ![PyPI download month](https://img.shields.io/pypi/dm/django-lockmin.svg)
-    [![PyPI version](https://badge.fury.io/py/django-jazzmin.svg)](https://pypi.python.org/pypi/django-lockmin/)
-    ![Python versions](https://img.shields.io/badge/python-%3E=3.12-brightgreen)
+    [![PyPI version](https://badge.fury.io/py/django-lockmin.svg)](https://pypi.python.org/pypi/django-lockmin/)
+    ![Python versions](https://img.shields.io/badge/python-%3E=3.8-brightgreen)
     ![Django Versions](https://img.shields.io/badge/django-%3E=4.2-brightgreen)
     [![Code style: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) 
 
