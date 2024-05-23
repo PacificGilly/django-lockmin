@@ -55,12 +55,12 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
 
       - name: Save build
-          uses: actions/cache/save@v4
-          id: build-cache
-          with:
-            path: |
-              dist/
-            key: cache-${{ github.run_id }}-${{ github.run_attempt }}
+        uses: actions/cache/save@v4
+        id: build-cache
+        with:
+          path: dist/
+          key: cache-${{ github.run_id }}-${{ github.run_attempt }}
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
